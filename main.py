@@ -13,10 +13,6 @@ app.add_middleware(
 )
 # ────────────────────────────────────────────────────────────────────────────────
 
-@app.api_route("/", methods=["GET", "POST"])
+@app.api_route("/", methods=["GET", "POST", "HEAD"])
 async def root(request: Request):
-    """
-    Respond to both GET and POST at "/".
-    If it’s a POST, the body is ignored and we return the same message.
-    """
-    return {"message": "Hello from Virtual TA!"}
+    return {"answer": "Hello from Virtual TA!"}
