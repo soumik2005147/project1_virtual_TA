@@ -1,19 +1,22 @@
 # main.py
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
 # ─── CORS CONFIGURATION ────────────────────────────────────────────────────────
-# Allow all origins (you can narrow this later if you prefer):
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],      # <-- allow requests from any origin
-    allow_methods=["*"],      # <-- allow GET, POST, PUT, DELETE, etc.
-    allow_headers=["*"],      # <-- allow any headers
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 # ────────────────────────────────────────────────────────────────────────────────
 
-@app.get("/")
-async def root():
+@app.api_route("/", methods=["GET", "POST"])
+async def root(request: Request):
+    """
+    Respond to both GET and POST at "/".
+    If it’s a POST, the body is ignored and we return the same message.
+    """
     return {"message": "Hello from Virtual TA!"}
