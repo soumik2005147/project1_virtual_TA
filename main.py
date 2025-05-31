@@ -15,4 +15,7 @@ app.add_middleware(
 
 @app.api_route("/", methods=["GET", "POST", "HEAD"])
 async def root(request: Request):
-    return {"answer": "Hello from Virtual TA!"}
+    return {
+        "answer": "Hello from Virtual TA!",
+        "links": []
+    }
