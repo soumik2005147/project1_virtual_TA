@@ -10,4 +10,6 @@ venv/
 preprocess.py
 *.pyc
 .DS_Store
+project-tds-virtual-ta-promptfoo.yaml
+test-image.webp
 
